@@ -1,4 +1,4 @@
-create database escola;
+ccreate database escola;
 
 use escola;
 
@@ -16,9 +16,12 @@ insert into aluno values ( null, 'Ana Carolina', '2005-06-12', '123.456.789-03',
 insert into aluno ( matricula, nome, nascimento, cpf, responsavel, email ) values ( null, 'Elias Sherman', '1995-03-02', '123.456.789-04', 'John Sherman', 'es@email.com' );
 insert into aluno ( nome, cpf, responsavel ) values ( 'Waldiney Mouse', '123.456.789-05', 'Wesley Keyboard' );
 insert into aluno ( matricula, nome, nascimento, cpf, responsavel, email ) values ( null, 'Genivaldo Williams', null, '123.456.789-08', 'Clotilde Williams', 'gw@email.com' );
+insert into aluno values ( null, 'Judite Presley', '2006-04-07', '123.456.789-09', 'Elvis Presley', 'jp@email.com' );
+
 
 insert into turma values ( 2023080, 'M', 'Técnico de Informática' );
 insert into turma values ( 2023090, 'T', 'Técnico em Comunicação Visual');
+insert into turma values ( 2023100, 'M', 'Técnico em Comunicação Visual' );
 
 insert into estuda values ( 7501, 3001, 2023090 );
 insert into estuda values ( null, 3005, 2023080 );
@@ -27,6 +30,7 @@ insert into estuda values ( null, 3004, 2023090 );
 insert into estuda values ( null, 3003, 2023080 );
 insert into estuda values ( null, 3006, 2023090 );
 insert into estuda values ( null, 3007, 2023080 );
+insert into estuda values ( null, 3008, 2023100 );
 
 alter table estuda add constraint fkmat foreign key (fk_Aluno_matricula) references aluno (matricula);
 alter table estuda add constraint fknum foreign key (fk_Turma_matricula) references turma (numero);
@@ -35,21 +39,63 @@ alter table possui add constraint fknumpossui foreign key (fk_Turma_matricula) r
 alter table leciona add constraint fkdiscod2 foreign key (fk_Disciplina_cod_disciplina) references disciplina (cod_disciplina);
 alter table leciona add constraint fkprofmat foreign key (fk_Professor_matricula) references professor (matricula);
 
+alter table professor add email varchar(50) after nome;
+
 insert into disciplina values ( 11, 'Programação' );
 insert into disciplina values ( null, 'Redes' );
 insert into disciplina values ( null, 'Tratramento de Imagem' );
+insert into disciplina values ( null, Lógica de Programação );
 
 insert into professor values ( 8001, 'Sérgio', 'Programador' );
 insert into professor values ( null, 'Vicente', 'Profissional de Redes' );
 insert into professor values ( null, 'Flávia', 'Tratadora de Imagens' );
+insert into professor values ( null, 'Jefferson Brandão', 'Informática' );
 
 insert into possui values ( 501, 11, 2023080 );
 insert into possui values ( null, 12, 2023080 );
 insert into possui values ( null, 13, 2023090 );
+insert into possui values ( null, 13, 2023100 );
 
 insert into leciona values ( 201, 11, 8001 );
 insert into leciona values ( null, 12, 8002 );
 insert into leciona values ( null, 13, 8003 );
+insert into leciona values ( null, 14, 8004 );
+
+update professor set nome = 'Vicente Orsino' where matricula = 8002;
+update aluno set nascimento = '2003-09-20' where matricula = 3006;
+update aluno set nascimento = '1970-08-17' where matricula = 3007;
+update aluno set nascimento = '2003-09-20' where matricula = 3004;
+update professor set email = 'serginho@email.com' where matricula = 8001;
+update professor set email = 'vo@email.com' where matricula = 8002;
+update professor set email = 'flavinha@email.com' where matricula = 8003;
+update professor set email = 'jb@email.com' where matricula = 8004;
+update disciplina set nome = 'Programação Python' where cod_disciplina = 11;
+
+delete from turma where numero = 2023091;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
