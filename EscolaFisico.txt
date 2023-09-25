@@ -17,7 +17,8 @@ insert into aluno ( matricula, nome, nascimento, cpf, responsavel, email ) value
 insert into aluno ( nome, cpf, responsavel ) values ( 'Waldiney Mouse', '123.456.789-05', 'Wesley Keyboard' );
 insert into aluno ( matricula, nome, nascimento, cpf, responsavel, email ) values ( null, 'Genivaldo Williams', null, '123.456.789-08', 'Clotilde Williams', 'gw@email.com' );
 insert into aluno values ( null, 'Judite Presley', '2006-04-07', '123.456.789-09', 'Elvis Presley', 'jp@email.com' );
-
+insert into aluno values ( null, 'Mouse Sherman William', '2015-09-12', '123.456.789-11', 'Cpu Sherman', null);
+insert into aluno values ( null, 'Renata Mouse', '1995-03-15', '123.456.789-10', 'Wesley Keyboard', 'rm@email.com');
 
 insert into turma values ( 2023080, 'M', 'Técnico de Informática' );
 insert into turma values ( 2023090, 'T', 'Técnico em Comunicação Visual');
@@ -40,6 +41,7 @@ alter table leciona add constraint fkdiscod2 foreign key (fk_Disciplina_cod_disc
 alter table leciona add constraint fkprofmat foreign key (fk_Professor_matricula) references professor (matricula);
 
 alter table professor add email varchar(50) after nome;
+alter table professor add dependentes int;
 
 insert into disciplina values ( 11, 'Programação' );
 insert into disciplina values ( null, 'Redes' );
@@ -70,34 +72,44 @@ update professor set email = 'vo@email.com' where matricula = 8002;
 update professor set email = 'flavinha@email.com' where matricula = 8003;
 update professor set email = 'jb@email.com' where matricula = 8004;
 update disciplina set nome = 'Programação Python' where cod_disciplina = 11;
+update professor set dependentes = 3 where matricula = 8001;
+update professor set dependentes = 0 where matricula = 8002;
+update professor set dependentes = 2 where matricula = 8004;
 
 delete from turma where numero = 2023091;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select * from aluno where nascimento = '2003-09-20';
+select matricula, nome from aluno order by nome;
+select matricula, nome, responsavel from aluno order by responsavel desc;
+select * from aluno where matricula >= 3004 and matricula <= 3008;
+select * from aluno where matricula between 3004 and 3008;
+select * from aluno where email is null;
+select * from aluno where email is not null;
+select * from aluno where matricula <= 3004 or matricula >= 3007 order by nascimento desc;
+select * from aluno where matricula in (3003, 3006, 3007);
+select * from aluno where nome like 'G%';
+select * from aluno where nome like '%e';
+select * from aluno where nome like '_o%';
+select * from aluno where nome like '__n%';
+select * from aluno where nome like '%a%';
+select * from aluno where nome like '%s%';
+select * from aluno where nome like '%mouse%';
+select * from aluno where nome like '% mouse%';
+select avg(dependentes) from professor;
+select sum(dependentes) from professor;
+select max(dependentes) from professor;
+select max(dependentes) from professor;
+select matricula, nome, nascimento from aluno where month(nascimento) = 3;
+select matricula, nome, nascimento, month(nascimento) from aluno;
+select matricula, nome, nascimento, monthname(nascimento) from aluno;
+select concat('Nome do aluno: ', nome) from aluno;
+select concat('Nome: ', nome, ' - E-mail:',email) from aluno where email is not null;
+select concat('Nome: ', nome, ' - Data de Nascimento: ', nascimento) from aluno;
+select upper(nome) from aluno;
+select aluno.nome, turma.definicao, turma.turno from aluno, turma, estuda where aluno.matricula = estuda.fk_aluno_matricula and fk_turma_matricula = turma.numero;
+select aluno.nome, turma.definicao, turma.turno from aluno, turma, estuda where aluno.matricula = estuda.fk_aluno_matricula and fk_turma_matricula = turma.numero and aluno.matricula = 3001;
+select aluno.nome, turma.definicao, turma.turno from aluno, turma, estuda where aluno.matricula = estuda.fk_aluno_matricula and fk_turma_matricula = turma.numero order by aluno.nome;
+select * from aluno where matricula between 3004 and 3008
 
 
 
