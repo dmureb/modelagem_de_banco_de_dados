@@ -57,6 +57,7 @@ insert into possui values ( 501, 11, 2023080 );
 insert into possui values ( null, 12, 2023080 );
 insert into possui values ( null, 13, 2023090 );
 insert into possui values ( null, 13, 2023100 );
+insert into possui values ( null, 14, 2023080 );
 
 insert into leciona values ( 201, 11, 8001 );
 insert into leciona values ( null, 12, 8002 );
@@ -99,6 +100,7 @@ select avg(dependentes) from professor;
 select sum(dependentes) from professor;
 select max(dependentes) from professor;
 select max(dependentes) from professor;
+select count(definicao) from turma where definicao = 'Técnico de Informática';
 select matricula, nome, nascimento from aluno where month(nascimento) = 3;
 select matricula, nome, nascimento, month(nascimento) from aluno;
 select matricula, nome, nascimento, monthname(nascimento) from aluno;

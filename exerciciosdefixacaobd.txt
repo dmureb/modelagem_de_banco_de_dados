@@ -1,0 +1,37 @@
+Exercício de fixação de BD
+
+1 - select nome, email from aluno where email is not null;
+
+2 - select nome from professor where formacao = 'Informática' order by nome;
+
+3 - select * from aluno where matricula >= 3004 and matricula <= 3008;
+
+4 - select * from turma where definicao = 'Técnico de Informática';
+
+5 - select disciplina.* from disciplina, possui, turma where disciplina.cod_disciplina = possui.fk_disciplina_cod_disciplina and possui.fk_turma_matricula = turma.numero and turma.numero = 2023080;
+
+6 - select count(definicao) from turma where definicao = 'Técnico de Informática';
+
+7 - select * from aluno where year(nascimento) = 2000;
+
+8 - select nome, nascimento from aluno where month(nascimento) = 09;
+
+9 - select aluno.nome, aluno.cpf from aluno, estuda, turma where aluno.matricula = estuda.fk_aluno_matricula and fk_turma_matricula = turma.numero and turma.turno = 'M';
+
+10 - select nome from disciplina, possui, turma where disciplina.cod_disciplina = possui.fk_disciplina_cod_disciplina and possui.fk_turma_matricula = turma.numero and turma.turno = 'T';
+
+11 - select professor.nome from professor, leciona, disciplina, possui, turma where professor.matricula = leciona.fk_professor_matricula and leciona.fk_disciplina_cod_disciplina = disciplina.cod_disciplina and disciplina.cod_disciplina = possui.fk_disciplina_cod_disciplina and possui.fk_turma_matricula = turma.numero and turma.numero = 2023080;
+
+12 - select aluno.nome from professor, leciona, disciplina, possui, turma, estuda, aluno where professor.matricula = leciona.fk_professor_matricula and leciona.fk_disciplina_cod_disciplina = disciplina.cod_disciplina and disciplina.cod_disciplina = possui.fk_disciplina_cod_disciplina and possui.fk_turma_matricula = turma.numero and turma.numero = estuda.fk_turma_matricula and estuda.fk_aluno_matricula = aluno.matricula and professor.matricula = 8002;
+
+13 - select aluno.matricula, aluno.nome from aluno, estuda, turma, possui, disciplina where aluno.matricula = estuda.fk_aluno_matricula and estuda.fk_turma_matricula = turma.numero and turma.numero = possui.fk_turma_matricula and possui.fk_disciplina_cod_disciplina = disciplina.cod_disciplina and disciplina.cod_disciplina = 14;
+
+14 -select professor.nome from professor, leciona, disciplina, possui, turma where professor.matricula = leciona.fk_professor_matricula and leciona.fk_disciplina_cod_disciplina = disciplina.cod_disciplina and disciplina.cod_disciplina = possui.fk_disciplina_cod_disciplina and possui.fk_turma_matricula = turma.numero and turma.turno = 'T' order by nome;
+
+15 -select professor.nome from professor, leciona, disciplina, possui, turma where dependentes >= 1 and professor.matricula = leciona.fk_professor_matricula and leciona.fk_disciplina_cod_disciplina = disciplina.cod_disciplina and disciplina.cod_disciplina = possui.fk_disciplina_cod_disciplina and possui.fk_turma_matricula = turma.numero and turma.numero = 2023080;
+
+16 - select nome from disciplina where nome like '%Programação%';
+
+17 - select nome, email from professor where matricula = 8002 or matricula = 8004;
+
+18 - select concat('Professor: ', nome, ' - Formação: ', formacao) from professor;
